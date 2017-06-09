@@ -1,5 +1,7 @@
 # Slack autoresponder (for fun)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/adriancarriger/slack.svg)](https://greenkeeper.io/)
+
 ## Usage
 
 - Paste `index.js` into the console of a slack web interface

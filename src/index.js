@@ -1,8 +1,7 @@
 // Config
-const averageResponse = 8;
+const averageResponse = 4;
 // Variables
-const acceptedUsers = [];
-const defaultChannels = {};
+const acceptedChannels = [];
 let paused = false;
 
 const onMessageOld = TS.ms.msg_handlers.message;
@@ -13,8 +12,27 @@ function onMessage(message) {
   think(message);
 }
 
+
+function getChannel() {
+  document.getElementById('msg_input').querySelector('p').innerHTML = 'This message was not really sent.'
+  return new Promise(r => {
+    setTimeout(() => {
+      let channel;
+      const onMessageOld = TS.ms.send;
+      TS.ms.send = (e, t, n) => channel = e.channel;
+      TS.view.submit();
+      TS.ms.send = onMessageOld;
+      r(channel);
+    });
+  });
+}
+
+function initCurrent(message) {
+  getChannel().then(channel => init(channel, message))
+}
+
 function think(message) {
-  if (paused || !acceptedUsers.includes(message.user)) { 
+  if (paused || !acceptedChannels.includes(message.channel)) { 
     console.log(`Not sending a message to ${message.user} using channel ${message.channel}`);
     return;
   }
@@ -30,14 +48,12 @@ function toggle() {
   paused = !paused;
 }
 
-function init(user, channel, text) {
-  acceptedUsers.push(user);
-  defaultChannels[user] = channel;
+function init(channel, text) {
+  acceptedChannels.push(channel);
   if (text) {
     setTimeout(() => send({
-      user: user,
       text: text,
-      channel: defaultChannels[user],
+      channel: channel,
       type: 'message'
     }), 1 * 1000);
   }

@@ -75,7 +75,19 @@ function getMessage() {
     'Can you bring me my chapstick?',
     'Do your chickens have large talons?',
     'I\'m gonna call the cops on you!',
-    'The worst day of my life. What do you think?'
+    'The worst day of my life. What do you think?',
+    ' That\'s my ride.',
+    'How long did it take you to grow that mustache?',
+    'Build her a cake or something.',
+    'Can I use your guyses phone?',
+    'Just borrow some from the school nurse. I know she has like five sticks in her drawer.',
+    'Do the chickens have large talons?',
+    'I spent it with my uncle in Alaska hunting wolverines!',
+    'It took me like three hours to finish the shading on your upper lip. It\'s probably the best drawing I\'ve ever done.',
+    'You should probably pick up all the stuff you left on my lawn, because it\'s taking up so much room in my backpack I can\'t fit my nunchucks.',
+    'I like your sleeves. They\'re real big.',
+    'Fine! Go ahead!',
+    'So, you got my back and everything, right?'
   ];
   const index = Math.round( Math.random() * (options.length - 1) );
   return options[index];

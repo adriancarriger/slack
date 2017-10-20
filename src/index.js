@@ -12,23 +12,12 @@ function onMessage(message) {
   think(message);
 }
 
-
 function getChannel() {
-  document.getElementById('msg_input').querySelector('p').innerHTML = 'This message was not really sent.'
-  return new Promise(r => {
-    setTimeout(() => {
-      let channel;
-      const onMessageOld = TS.ms.send;
-      TS.ms.send = (e, t, n) => channel = e.channel;
-      TS.view.submit();
-      TS.ms.send = onMessageOld;
-      r(channel);
-    });
-  });
+  return TS.shared.getActiveModelOb().id
 }
 
 function initCurrent(message) {
-  getChannel().then(channel => init(channel, message))
+  init(getChannel(), message)
 }
 
 function think(message) {
@@ -36,12 +25,11 @@ function think(message) {
     console.log(`Not sending a message to ${message.user} using channel ${message.channel}`);
     return;
   }
-  message.text = getMessage();
-  setTimeout(() => send(message), averageResponse * 2 * 1000 * Math.random());
+  setTimeout(() => send(message.channel, getMessage()), averageResponse * 2 * 1000 * Math.random());
 }
 
-function send(message) {
-  setTimeout(() => TS.ms.send(message));
+function send(channel, text) {
+  TS.client.ui.sendMessage(TS.shared.getModelObById(channel), text)
 }
 
 function toggle() {
@@ -51,11 +39,7 @@ function toggle() {
 function init(channel, text) {
   acceptedChannels.push(channel);
   if (text) {
-    setTimeout(() => send({
-      text: text,
-      channel: channel,
-      type: 'message'
-    }), 1 * 1000);
+    setTimeout(() => send(channel, text), 1 * 1000);
   }
 }
 
@@ -74,7 +58,6 @@ function getMessage() {
     'I see you\'re drinking one percent. Is that cause you think you\'re fat?',
     'Can you bring me my chapstick?',
     'Do your chickens have large talons?',
-    'I\'m gonna call the cops on you!',
     'The worst day of my life. What do you think?',
     ' That\'s my ride.',
     'How long did it take you to grow that mustache?',

@@ -3,5 +3,6 @@
 ## Usage
 
 - Paste `index.js` into the console of a slack web interface
-- init a user like this: `init('username-here', 'channel-here', 'optional initial message');`
-- When someone sends you a message that you haven't run init with, it will display their username and channel in the console
+- get channel id: `getChannel();`
+- init channel by id: `init('channel-id', 'optional initial message')`
+- init current channel: `initCurrent('optional initial message');`

@@ -13,7 +13,12 @@
 
 - Paste [`src/index.js`](src/index.js) into the console of the [Slack web UI](https://slack.com/)
 - Navigate to your desired Slack channel
-- Paste `initCurrent('optional initial message');` into the console to init current channel
+- Paste the following into your browser console to init the current channel:
+
+```js
+// Init the current channel
+initCurrent('optional initial message');
+```
 
 ## Init a specific channel
 

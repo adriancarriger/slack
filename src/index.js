@@ -70,7 +70,8 @@ function getMessage() {
     'You should probably pick up all the stuff you left on my lawn, because it\'s taking up so much room in my backpack I can\'t fit my nunchucks.',
     'I like your sleeves. They\'re real big.',
     'Fine! Go ahead!',
-    'So, you got my back and everything, right?'
+    'So, you got my back and everything, right?',
+    'I guess you could say things are getting pretty serious.'
   ];
   const index = Math.round( Math.random() * (options.length - 1) );
   return options[index];

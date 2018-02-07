@@ -13,7 +13,7 @@ function onMessage(message) {
 }
 
 function getChannel() {
-  return TS.shared.getActiveModelOb().id
+  return TS.shared.legacyGetActiveModelOb().id;
 }
 
 function initCurrent(message) {
@@ -29,7 +29,7 @@ function think(message) {
 }
 
 function send(channel, text) {
-  TS.client.ui.sendMessage(TS.shared.getModelObById(channel), text)
+  TS.client.ui.sendMessage(TS.shared.legacyGetActiveModelOb(channel), text);
 }
 
 function toggle() {

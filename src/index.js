@@ -45,6 +45,7 @@ const onMessageOld = TS.ms.msg_handlers.message;
 TS.ms.msg_handlers.message = onMessage;
 
 function onMessage(message) {
+  console.log(message);
   onMessageOld(message);
   think(message);
 }
@@ -62,6 +63,7 @@ function think(message) {
     console.log(`Not sending a message to ${message.user} using channel ${message.channel}`);
     return;
   }
+  if (ignoreMessage(message)) { return; }
   setTimeout(() => {
     config.useGif ? sendGif(message.channel, getGifSearch()) : send(message.channel, getMessage());
   }, averageResponse * 2 * 1000 * Math.random());
@@ -105,4 +107,10 @@ function getGifSearch() {
 function randomIndex(inputArray) {
   const index = Math.round( Math.random() * (inputArray.length - 1) );
   return inputArray[index];
+}
+
+function ignoreMessage(message) {
+  const result = message.subtype === 'bot_message' || message.user === TS.boot_data.user_id;
+  console.log(`ignore message?`, result, message.subtype, message.user, TS.boot_data.user_id)
+  return result;
 }

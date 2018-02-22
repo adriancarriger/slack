@@ -32,6 +32,14 @@ function send(channel, text) {
   TS.client.ui.sendMessage(TS.shared.legacyGetActiveModelOb(channel), text);
 }
 
+function sendSlashCommand(channel, command) {
+  TS.client.ui.sendSlashCommand(TS.shared.legacyGetActiveModelOb(channel), command);
+}
+
+function sendSlashCurrent(command) {
+  sendSlashCommand(getChannel(), command);
+}
+
 function toggle() {
   paused = !paused;
 }

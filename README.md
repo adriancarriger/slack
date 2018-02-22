@@ -24,3 +24,7 @@ initCurrent('optional initial message');
 
 - get channel id: `getChannel();`
 - init channel by id: `init('channel-id', 'optional initial message')`
+
+## Gif mode
+
+Switch to gif mode by pasting `config.useGif = true;`

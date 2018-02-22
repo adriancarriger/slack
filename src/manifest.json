@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Slack Bot Helper",
+  "description": "Slack helper",
+  "version": "0.0.0-development",
+  "content_scripts": [{
+    "matches": ["*://*.slack.com/*"],
+    "js": ["contentscript.js"]
+  }],
+  "permissions": [
+    "activeTab"
+  ],
+  "web_accessible_resources": ["index.js"]
+}

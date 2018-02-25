@@ -36,7 +36,7 @@ const config = {
   useGif: false
 };
 
-const gifOptions = [
+let gifOptions = [
   'random'
 ];
 let paused = false;
@@ -98,6 +98,10 @@ function init(channel, text) {
 
 function getMessage() {
   return randomIndex(options);
+}
+
+function useGif(gifOption = 'random') {
+  config.useGif ? gifOptions = [ gifOption ] : config.useGif = true, gifOptions = [ gifOption ];
 }
 
 function getGifSearch() {

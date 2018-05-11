@@ -11,9 +11,9 @@
 
 ## Usage
 
-- Paste [`src/index.js`](src/index.js) into the console of the [Slack web UI](https://slack.com/)
-- Navigate to your desired Slack channel
-- Paste the following into your browser console to init the current channel:
+* Paste [`src/index.js`](src/index.js) into the console of the [Slack web UI](https://slack.com/)
+* Navigate to your desired Slack channel
+* Paste the following into your browser console to init the current channel:
 
 ```js
 // Init the current channel
@@ -22,9 +22,14 @@ initCurrent('optional initial message');
 
 ## Init a specific channel
 
-- get channel id: `getChannel();`
-- init channel by id: `init('channel-id', 'optional initial message')`
+* get channel id: `getChannel();`
+* init channel by id: `init('channel-id', 'optional initial message')`
 
 ## Gif mode
 
 Switch to gif mode by pasting `config.useGif = true;`
+
+## License
+
+slack is licensed under the MIT Open Source license.
+For more information, see the [LICENSE](LICENSE) file in this repository.
